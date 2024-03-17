@@ -1,4 +1,4 @@
-import { getServerUser } from "@/lib/auth";
+import { auth } from "@/lib/auth";
 
 type ProfilePageProps = {
     params: {};
@@ -9,6 +9,6 @@ export default async function ProfilePage({
     params,
     searchParams,
 }: ProfilePageProps) {
-    const user = await getServerUser();
-    return <>Hello {user?.email}</>;
+    const session = await auth();
+    return <>Hello {session?.user}</>;
 }

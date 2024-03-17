@@ -1,6 +1,6 @@
-import { getServerUser } from "@/lib/auth";
 import { notFound } from "next/navigation";
 import Providers from "./providers";
+import { auth } from "@/lib/auth";
 
 type layoutProps = {
     params: {};
@@ -8,11 +8,11 @@ type layoutProps = {
 };
 
 export default async function layout({ params, children }: layoutProps) {
-    const user = await getServerUser();
+    const session = await auth();
 
-    if (!user) {
+    if (!session) {
         notFound();
     }
 
-    return <Providers user={user}>{children}</Providers>;
+    return <Providers user={session.user}>{children}</Providers>;
 }
