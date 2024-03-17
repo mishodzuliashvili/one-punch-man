@@ -24,9 +24,7 @@ export default async function RootLayout({
     if (!i18nConfig.locales.includes(locale)) {
         notFound();
     }
-    const messages = await getMessages({
-        locale,
-    });
+    const messages = await getMessages();
     const session = await auth();
 
     return (

@@ -14,7 +14,7 @@ export default async function LoginPage({
     searchParams,
 }: LoginPageProps) {
     const session = await auth();
-    console.log("session", session);
+
     if (session) {
         return (
             <div>
