@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useCurrentLocale } from "next-i18n-router/client";
-import i18nConfig from "@/i18n/i18nConfig";
+import i18nConfig, { localeNames } from "@/i18n/i18nConfig";
 import { ChangeEvent } from "react";
 
 type LanguageSwitcherProps = {};
@@ -38,8 +38,13 @@ export default function LanguageSwitcher({}: LanguageSwitcherProps) {
 
     return (
         <select onChange={handleChange} value={currentLocale}>
-            <option value="en">English</option>
-            <option value="ka">German</option>
+            {/* <option value="en">English</option>
+            <option value="ka">German</option> */}
+            {localeNames.map(({ locale, name }) => (
+                <option key={locale} value={locale}>
+                    {name}
+                </option>
+            ))}
         </select>
     );
 }

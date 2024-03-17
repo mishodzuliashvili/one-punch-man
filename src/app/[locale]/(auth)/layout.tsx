@@ -1,4 +1,4 @@
-import { getServerUser } from "@/lib/auth";
+import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";
 
 type layoutProps = {
@@ -10,8 +10,8 @@ export default async function layout({
     params: { locale },
     children,
 }: layoutProps) {
-    const user = await getServerUser();
-    if (user) {
+    const session = await auth();
+    if (session?.user) {
         notFound();
     }
 

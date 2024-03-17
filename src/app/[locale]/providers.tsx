@@ -17,7 +17,11 @@ export default function Providers({
     messages,
 }: ProvidersProps) {
     return (
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider
+            timeZone="Asia/Tbilisi"
+            locale={locale}
+            messages={messages}
+        >
             <SessionProvider session={session}>{children}</SessionProvider>
         </NextIntlClientProvider>
     );

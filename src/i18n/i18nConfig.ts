@@ -7,4 +7,14 @@ const i18nConfig: Config = {
     localeDetector: false,
 };
 
+type LocalName = {
+    locale: string;
+    name: string;
+};
+
+export const localeNames: LocalName[] = [
+    { locale: "ka", name: "ქართული" },
+    { locale: "en", name: "English" },
+]
+
 export default i18nConfig;

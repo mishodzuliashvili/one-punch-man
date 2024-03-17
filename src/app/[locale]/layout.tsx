@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
 import Providers from "./providers";
-import { getServerSession } from "next-auth";
-import authOptions from "@/lib/auth";
+import authOptions, { auth } from "@/lib/auth";
 import i18nConfig from "@/i18n/i18nConfig";
 import { notFound } from "next/navigation";
 import { getMessages } from "next-intl/server";
-import { useMessages } from "next-intl";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +27,7 @@ export default async function RootLayout({
     const messages = await getMessages({
         locale,
     });
-    const session = await getServerSession(authOptions);
+    const session = await auth();
 
     return (
         <html lang={locale}>
